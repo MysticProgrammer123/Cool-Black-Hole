@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "profs_black_hole",
+	"version": "${version}",
+	"name": "Black Hole",
+	"description": "Physically grounded black and white holes, as many as you like: real-time ray-marched gravitational lensing through Kerr spacetime (and its negative-mass mirror for white holes, with a blinding core and blue-white ejection disk), relativistic accretion disks with Doppler beaming, polar jets, Hawking radiation and a radiation zone, gravity with frame dragging, spaghettification, time dilation and its white-hole mirror, holes that grow, evaporate and merge, wormholes and the Singularity Dimension, spacetime corruption of the ground, Gravity Stabilizers, Event Horizon Goggles, a three-mode Mini Singularity Injector, an in-game control panel (B) and the /blackhole and /whitehole commands.",
+	"authors": [
+		"Prof"
+	],
+	"license": "All Rights Reserved",
+	"icon": "assets/profs_black_hole/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.prof.blackhole.ProfsBlackHole"
+		],
+		"client": [
+			"com.prof.blackhole.client.ProfsBlackHoleClient"
+		]
+	},
+	"mixins": [
+		"profs_black_hole.mixins.json",
+		{
+			"config": "profs_black_hole.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

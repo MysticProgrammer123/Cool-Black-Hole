@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "profs_black_hole:block/gravity_stabilizer_top",
+		"side": "profs_black_hole:block/gravity_stabilizer_side"
+	}
+}

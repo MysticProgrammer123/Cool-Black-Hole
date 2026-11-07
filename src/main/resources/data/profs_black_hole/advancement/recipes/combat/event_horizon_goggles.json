@@ -1,0 +1,32 @@
+{
+	"parent": "minecraft:recipes/root",
+	"criteria": {
+		"has_singularity_core": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": "profs_black_hole:singularity_core"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "profs_black_hole:event_horizon_goggles"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_singularity_core",
+			"has_the_recipe"
+		]
+	],
+	"rewards": {
+		"recipes": [
+			"profs_black_hole:event_horizon_goggles"
+		]
+	}
+}

@@ -1,0 +1,101 @@
+// 1. ProGuard eklentisini çekmek için buildscript EN ÜSTE gelmeli
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.guardsquare:proguard-gradle:7.4.2'
+    }
+}
+
+plugins {
+    id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
+    id 'maven-publish'
+}
+
+base {
+    // Release jars carry the mod's name: black_hole-<version>.jar (the mod id stays profs_black_hole).
+    archivesName = "black_hole"
+}
+
+repositories {
+    // Add repositories to retrieve artifacts from in here.
+}
+
+loom {
+    splitEnvironmentSourceSets()
+
+    mods {
+        "profs_black_hole" {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+processResources {
+    def version = project.version
+    inputs.property "version", version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 21
+}
+
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+jar {
+    def archivesName = project.base.archivesName.get()
+    inputs.property "archivesName", archivesName
+
+    from("LICENSE") {
+        rename { "${it}_$archivesName"}
+    }
+}
+
+publishing {
+    publications {
+        create("mavenJava", MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+    }
+}
+
+// 2. ProGuard Obfuscation Görevi (Dosyanın en altı)
+task obfuscateJar(type: proguard.gradle.ProGuardTask, dependsOn: remapJar) {
+    def inputJar = remapJar.archiveFile.get().asFile
+    def outputJar = file("${buildDir}/libs/${base.archivesName.get()}-${project.version}-obfuscated.jar")
+
+    injars inputJar
+    outjars outputJar
+
+    dontwarn
+    dontnote
+
+    keepattributes '*Annotation*,Signature,InnerClasses,EnclosingMethod'
+
+    keep 'public class * implements net.fabricmc.api.ModInitializer { public *; }'
+    keep 'public class * implements net.fabricmc.api.ClientModInitializer { public *; }'
+    keep '@org.spongepowered.asm.mixin.Mixin class * { *; }'
+
+    doLast {
+        println "ProGuard Test JAR oluşturuldu: ${outputJar}"
+    }
+}

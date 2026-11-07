@@ -1,0 +1,20 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "com.prof.blackhole.client.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"WorldRendererMixin",
+		"EntityRenderDispatcherMixin",
+		"SoundSystemMixin",
+		"ClientWorldMixin",
+		"BackgroundRendererMixin",
+		"MinecraftClientMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

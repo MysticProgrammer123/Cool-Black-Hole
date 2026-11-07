@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:block/cube_bottom_top",
+	"textures": {
+		"top": "profs_black_hole:block/event_horizon_waste_top",
+		"bottom": "profs_black_hole:block/event_horizon_waste_bottom",
+		"side": "profs_black_hole:block/event_horizon_waste_side"
+	}
+}

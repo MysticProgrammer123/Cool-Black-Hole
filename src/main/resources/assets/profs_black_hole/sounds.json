@@ -1,0 +1,11 @@
+{
+	"gravitational_siren": {
+		"subtitle": "subtitles.profs_black_hole.gravitational_siren",
+		"sounds": [
+			{
+				"name": "profs_black_hole:gravitational_siren",
+				"attenuation_distance": 160
+			}
+		]
+	}
+}

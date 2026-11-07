@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"": [
+			{ "model": "profs_black_hole:block/event_horizon_waste" },
+			{ "model": "profs_black_hole:block/event_horizon_waste", "y": 90 },
+			{ "model": "profs_black_hole:block/event_horizon_waste", "y": 180 },
+			{ "model": "profs_black_hole:block/event_horizon_waste", "y": 270 }
+		]
+	}
+}

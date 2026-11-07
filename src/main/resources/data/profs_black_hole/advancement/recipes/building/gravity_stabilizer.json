@@ -1,0 +1,32 @@
+{
+	"parent": "minecraft:recipes/root",
+	"criteria": {
+		"has_lodestone": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": "minecraft:lodestone"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "profs_black_hole:gravity_stabilizer"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_lodestone",
+			"has_the_recipe"
+		]
+	],
+	"rewards": {
+		"recipes": [
+			"profs_black_hole:gravity_stabilizer"
+		]
+	}
+}

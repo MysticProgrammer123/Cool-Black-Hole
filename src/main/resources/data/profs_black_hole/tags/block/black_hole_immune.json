@@ -1,0 +1,7 @@
+{
+	"replace": false,
+	"values": [
+		"#minecraft:wither_immune",
+		"profs_black_hole:gravity_stabilizer"
+	]
+}

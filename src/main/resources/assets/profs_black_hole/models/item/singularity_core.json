@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "profs_black_hole:item/singularity_core"
+	}
+}
